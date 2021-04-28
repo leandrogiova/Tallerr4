@@ -1,5 +1,9 @@
 package MiProyecto.App1;
 
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +20,25 @@ public class UsuarioController{
 
 @GetMapping
 //si el pedido del usuario es un get(el get devuelve algo), voy a entrar por aca
-public String todosLosUsuarios(){
-    return "hola";
+public List<Usuario> todosLosUsuarios(){
+    
+    Usuario u1 = new Usuario();
+
+    List<Usuario> usuarios = new ArrayList<>();
+
+
+    u1.setLogin("LDiamand");
+    u1.setNombre("Luciano");
+    u1.setApellido("Diamand");
+
+    Usuario u2 = new Usuario();
+    u2.setLogin("Leandrogiova");
+    u2.setNombre("Leandro");
+    u2.setApellido("Giovacchiini");
+
+    usuarios.add(u1);
+    usuarios.add(u2);
+
+    return usuarios;
 }
 }
