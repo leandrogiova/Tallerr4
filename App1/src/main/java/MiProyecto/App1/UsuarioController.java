@@ -24,7 +24,7 @@ public class UsuarioController{
 
 @GetMapping
 //si el pedido del usuario es un get(el get devuelve algo), voy a entrar por aca
-public List<Usuario> todosLosUsuarios(){
+public List<Usuario> todosLosUsuarios(){ 
     return usuarioService.obtenerTodosLosUsuarios();
 
 

@@ -13,8 +13,7 @@ public class UsuarioServicio {
 
 
     public List<Usuario> obtenerTodosLosUsuarios(){
-         
-    return  usuarioRepository.findAll();
+        return  usuarioRepository.findAll();
     }
 
 }

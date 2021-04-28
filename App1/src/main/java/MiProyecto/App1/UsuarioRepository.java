@@ -1,16 +1,24 @@
 package MiProyecto.App1;
 
-import java.util.*;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
 //En general es donde esta CRUD
 //C = CREATE   R = READ   U = UPDATE   D = DELETE
 // funciones para la base de datos
 // crear un usuario, para leer un usuario ...
+ 
 
-public class UsuarioRepository{
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+ 
+}
 
+
+    /* 
     public List<Usuario> findAll(){
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -29,7 +37,4 @@ public class UsuarioRepository{
 
         return usuarios;
     }
-
-
-
-}
+    */
