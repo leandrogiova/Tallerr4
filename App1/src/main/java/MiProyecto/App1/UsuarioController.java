@@ -4,6 +4,7 @@ import java.util.*;
 //import java.util.ArrayList;
 //import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,28 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 //cuando yo escriba en el navegador web: "http://localhost:8080/usuarios" va a entrar a esta clase(UsuarioController)
 public class UsuarioController{
 
+    @Autowired //controla las instancias de usuarioServicice, lo mane SpringBoot
+    private UsuarioServicio usuarioService;
+
 
 @GetMapping
 //si el pedido del usuario es un get(el get devuelve algo), voy a entrar por aca
 public List<Usuario> todosLosUsuarios(){
+    return usuarioService.obtenerTodosLosUsuarios();
+
+
+
     
-    Usuario u1 = new Usuario();
-
-    List<Usuario> usuarios = new ArrayList<>();
-
-
-    u1.setLogin("LDiamand");
-    u1.setNombre("Luciano");
-    u1.setApellido("Diamand");
-
-    Usuario u2 = new Usuario();
-    u2.setLogin("Leandrogiova");
-    u2.setNombre("Leandro");
-    u2.setApellido("Giovacchiini");
-
-    usuarios.add(u1);
-    usuarios.add(u2);
-
-    return usuarios;
 }
 }
