@@ -1,0 +1,2 @@
+INSERT INTO USUARIO (id, username, nombre, apellido) values (1, 'LDiamand', 'Luciano', 'Diamand')
+INSERT INTO USUARIO (id, username, nombre, apellido) values (2, 'LeandroGiova', 'Leandro', 'Giovacchini')
