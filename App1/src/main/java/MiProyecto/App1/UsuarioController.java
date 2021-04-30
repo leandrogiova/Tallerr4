@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+//CAPA WEB
+
 @RestController  //son componentes que tienen que ver con la presentacion, 
 //el usurio escribiendo una URL, VA A CAER EN ALGUNA DE ESTAS CLASES
 

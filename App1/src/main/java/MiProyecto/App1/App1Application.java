@@ -1,7 +1,9 @@
 package MiProyecto.App1;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class App1Application {
@@ -10,6 +12,34 @@ public class App1Application {
 		SpringApplication.run(App1Application.class, args);
 	}
 
+	
+	@Bean
+	//son los objetos que va a gestionar automaticamente Spring
+	// poniendole @Bean a un objeto, hago que Spring gestione ese metodo
+	public CommandLineRunner loadAgendaData(UsuarioRepository repository){
+		return (args) -> {
+			Usuario u1 = new Usuario();
+			u1.setLogin("SGEnergy");
+			u1.setNombre("Silvio");
+			u1.setApellido("Giovacchini");
+
+
+			Usuario u2 = new Usuario();
+			u2.setLogin("OscarG");
+			u2.setNombre("Oscar");
+			u2.setApellido("Giovacch");
+
+			Usuario u3 = new Usuario();
+			u3.setLogin("MVanne");
+			u3.setNombre("Marisa");
+			u3.setApellido("Vannelli");
+
+
+			repository.save(u1);
+			repository.save(u2);
+			repository.save(u3);
+		};
+	}
 }
 
 
