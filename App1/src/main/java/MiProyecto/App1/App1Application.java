@@ -12,6 +12,7 @@ public class App1Application {
 		SpringApplication.run(App1Application.class, args);
 	}
 
+	
 	@Bean
 	//son los objetos que va a gestionar automaticamente Spring
 	// poniendole @Bean a un objeto, hago que Spring gestione ese metodo
