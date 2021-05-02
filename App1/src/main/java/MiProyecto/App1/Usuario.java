@@ -1,7 +1,5 @@
 package MiProyecto.App1;
 
-import java.beans.Transient;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +29,16 @@ public class Usuario{
     @javax.persistence.Transient
     //no lo muestra a nivel de usuario
     private String calculo;
+
+    private String calle;
+
+    private Integer altura;
+
+    private Integer piso;
+
+    private String departamento;
+    
+
 
 
 }
