@@ -22,12 +22,22 @@ public class App1Application {
 			u1.setLogin("SGEnergy");
 			u1.setNombre("Silvio");
 			u1.setApellido("Giovacchini");
+			Direccion dir1 = new Direccion();
+			dir1.setCalle("San Nicolas");
+			dir1.setAltura(698);
+			u1.setDirecccionCasa(dir1);
 
 
 			Usuario u2 = new Usuario();
 			u2.setLogin("OscarG");
 			u2.setNombre("Oscar");
 			u2.setApellido("Giovacch");
+			Direccion dir2 = new Direccion();
+			dir2.setCalle("Independencia");
+			dir2.setAltura(303);
+			dir2.setPiso(0);
+			dir2.setDepartamento("CientoUno");
+			u2.setDirecccionCasa(dir2);
 
 			Usuario u3 = new Usuario();
 			u3.setLogin("MVanne");

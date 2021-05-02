@@ -1,6 +1,9 @@
 package MiProyecto.App1;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,13 +33,20 @@ public class Usuario{
     //no lo muestra a nivel de usuario
     private String calculo;
 
-    private String calle;
+    @Embedded
+    private Direccion direcccionCasa;
 
-    private Integer altura;
+/*
+    @AttributeOverrides({
+        @AttributeOverride(name = "calle", column = @Column(name = "CALLE_LABORAL")),
+        @AttributeOverride(name = "piso", column = @Column(name = "PISO_LABORAL")),
+        @AttributeOverride(name = "altura", column = @Column(name = "PISO_LABORAL")),
+        @AttributeOverride(name = "departamento", column = @Column(name = "DEPARTAMENTO_LABORAL")),    })
+    @Embedded
+    private Direccion direccionLaboral;
+*/
 
-    private Integer piso;
 
-    private String departamento;
     
 
 
