@@ -1,5 +1,7 @@
 package MiProyecto.App1;
 
+import java.util.Optional;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +14,7 @@ public class App1Application {
 		SpringApplication.run(App1Application.class, args);
 	}
 
-	
+
 	@Bean
 	//son los objetos que va a gestionar automaticamente Spring
 	// poniendole @Bean a un objeto, hago que Spring gestione ese metodo
@@ -50,6 +52,82 @@ public class App1Application {
 			repository.save(u3);
 		};
 	}
+  
+	@Bean
+	public CommandLineRunner loadInstitutoData(InstitutoRepository repository){
+		return (args) -> {
+			Instituto ins1 = new Instituto();
+			ins1.setNombre("Instituto Medico de la Mujer");
+
+			Instituto ins2 = new Instituto();
+			ins2.setNombre("Instituto de Cardiología");
+
+			Instituto ins3 = new Instituto();
+			ins3.setNombre("Instituto Clemente Albarez");
+
+
+			repository.save(ins1);
+			repository.save(ins2);
+			repository.save(ins3);
+
+		};
+	}
+
+
+		@Bean
+		public CommandLineRunner loadMedicoData(MedicoRepository repository, InstitutoRepository repoInst){
+		return (args) -> {
+		
+			Medico  med1 = new Medico();
+			med1.setNombre("Alberto");
+			med1.setApellido("Maiorano");
+			med1.setDocumento(12123321);
+			med1.setNumMatricula(5789);
+			Direccion dir1 = new Direccion();
+			dir1.setCalle("San Martin");
+			dir1.setAltura(123);
+			
+
+			//consulta a la base de datos
+			//el objeto "i1" lo seteo con el id 3 
+			//es decir que el medico tiene un insituto con el id_instituto 3 
+			Optional<Instituto> i1 = repoInst.findById(3L);
+			if(i1.isPresent()){
+				med1.setInstituto(i1.get()); 
+			}
+			//HAY QUE TENER CUIDADO CON TODAS LAS CONSULTAS QUE GENERAMOS EN LA BASE DE DATOS
+
+
+			Medico  med2 = new Medico();
+			med2.setNombre("Eduardo");
+			med2.setApellido("Cuaranta");
+			med2.setDocumento(4567896);
+			med2.setNumMatricula(215);
+			Direccion dir2 = new Direccion();
+			dir1.setCalle("Ayacucho");
+			dir1.setAltura(321);
+
+			//esto es similar a la linea 94 
+			//esto lo que hace es obtener un objeto que se llama PROXY donde este objeto tiene el id en 1 del instituto
+			//no va la base de datos
+			Instituto instituto2 = repoInst.getOne(1L);
+			med2.setInstituto(instituto2);
+			//seteo al medico con este objeto con el id en 1.
+		
+			
+			
+			repository.save(med1);
+			repository.save(med2);
+
+
+
+		};
+
+
+
+	}
+
+
 }
 
 
