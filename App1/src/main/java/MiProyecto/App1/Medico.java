@@ -1,11 +1,15 @@
 package MiProyecto.App1;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+
 
 import lombok.Data;
 
@@ -28,9 +32,13 @@ public class Medico {
     @Embedded
     private Direccion direccion;
 
-    @OneToOne
-    private Instituto instituto;
+    @ManyToMany
+    private Set<Instituto> institutos = new HashSet<Instituto>();
 
+
+    public void add(Instituto instituto){
+        institutos.add(instituto);
+    }
     
 
 }

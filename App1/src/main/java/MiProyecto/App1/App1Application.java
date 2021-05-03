@@ -1,6 +1,10 @@
 package MiProyecto.App1;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+
+import javax.transaction.Transactional;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -52,7 +56,8 @@ public class App1Application {
 			repository.save(u3);
 		};
 	}
-  
+	
+	/*
 	@Bean
 	public CommandLineRunner loadInstitutoData(InstitutoRepository repository){
 		return (args) -> {
@@ -72,12 +77,37 @@ public class App1Application {
 
 		};
 	}
-
+	*/
 
 		@Bean
+		@Transactional
 		public CommandLineRunner loadMedicoData(MedicoRepository repository, InstitutoRepository repoInst){
 		return (args) -> {
-		
+			
+
+			Instituto ins1 = new Instituto();
+			ins1.setNombre("Instituto Medico de la Mujer");
+
+			Instituto ins2 = new Instituto();
+			ins2.setNombre("Instituto de Cardiología");
+
+			Instituto ins3 = new Instituto();
+			ins3.setNombre("Instituto Clemente Albarez");
+
+
+			repoInst.save(ins1);
+			repoInst.save(ins2);
+			repoInst.save(ins3);
+			
+			Set<Instituto> institutos = new HashSet<Instituto>();
+			institutos.add(ins1);
+			institutos.add(ins2);
+			institutos.add(ins3);
+
+
+
+
+
 			Medico  med1 = new Medico();
 			med1.setNombre("Alberto");
 			med1.setApellido("Maiorano");
@@ -86,16 +116,20 @@ public class App1Application {
 			Direccion dir1 = new Direccion();
 			dir1.setCalle("San Martin");
 			dir1.setAltura(123);
-			
+	
+			med1.setInstitutos(institutos);
 
+			/*
 			//consulta a la base de datos
 			//el objeto "i1" lo seteo con el id 3 
 			//es decir que el medico tiene un insituto con el id_instituto 3 
-			Optional<Instituto> i1 = repoInst.findById(3L);
+			//Optional<Instituto> i1 = repoInst.findById(3L);
 			if(i1.isPresent()){
 				med1.setInstituto(i1.get()); 
 			}
 			//HAY QUE TENER CUIDADO CON TODAS LAS CONSULTAS QUE GENERAMOS EN LA BASE DE DATOS
+			*/
+
 
 
 			Medico  med2 = new Medico();
@@ -107,14 +141,14 @@ public class App1Application {
 			dir2.setCalle("Ayacucho");
 			dir2.setAltura(321);
 
+			/*
 			//esto es similar a la linea 94 
 			//esto lo que hace es obtener un objeto que se llama PROXY donde este objeto tiene el id en 1 del instituto
 			//no va la base de datos
 			Instituto instituto2 = repoInst.getOne(1L);
 			med2.setInstituto(instituto2);
 			//seteo al medico con este objeto con el id en 1.
-		
-			
+			*/
 			
 			repository.save(med1);
 			repository.save(med2);
