@@ -104,8 +104,8 @@ public class App1Application {
 			med2.setDocumento(4567896);
 			med2.setNumMatricula(215);
 			Direccion dir2 = new Direccion();
-			dir1.setCalle("Ayacucho");
-			dir1.setAltura(321);
+			dir2.setCalle("Ayacucho");
+			dir2.setAltura(321);
 
 			//esto es similar a la linea 94 
 			//esto lo que hace es obtener un objeto que se llama PROXY donde este objeto tiene el id en 1 del instituto
